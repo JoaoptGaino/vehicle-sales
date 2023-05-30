@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,6 +29,9 @@ public class CityEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "state_id")
     private StateEntity state;
+
+    @OneToMany(mappedBy = "city")
+    private List<AddressEntity> addresses;
 
     @CreationTimestamp
     @Column(name = "created_at")
