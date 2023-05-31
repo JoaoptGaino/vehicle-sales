@@ -1,4 +1,4 @@
-package com.br.joaoptgaino.schedulingservice.service;
+package com.br.joaoptgaino.catalogservice.service;
 
 import com.br.joaoptgaino.catalogservice.dto.vehicleperks.VehiclePerkDTO;
 import com.br.joaoptgaino.catalogservice.dto.vehicleperks.VehiclePerkFormDTO;
@@ -20,7 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static com.br.joaoptgaino.schedulingservice.fixtures.vehicleperk.VehiclePerkFixture.*;
+import static com.br.joaoptgaino.catalogservice.fixtures.vehicleperk.VehiclePerkFixture.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;

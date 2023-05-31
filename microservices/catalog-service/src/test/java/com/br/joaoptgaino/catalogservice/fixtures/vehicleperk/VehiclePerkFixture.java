@@ -1,4 +1,4 @@
-package com.br.joaoptgaino.schedulingservice.fixtures.vehicleperk;
+package com.br.joaoptgaino.catalogservice.fixtures.vehicleperk;
 
 import com.br.joaoptgaino.catalogservice.dto.vehicleperks.VehiclePerkDTO;
 import com.br.joaoptgaino.catalogservice.dto.vehicleperks.VehiclePerkFormDTO;

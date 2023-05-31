@@ -1,4 +1,4 @@
-package com.br.joaoptgaino.schedulingservice.service;
+package com.br.joaoptgaino.catalogservice.service;
 
 
 import com.br.joaoptgaino.catalogservice.dto.category.CategoryDTO;
@@ -18,12 +18,11 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.br.joaoptgaino.schedulingservice.fixtures.category.CategoryFixture.*;
+import static com.br.joaoptgaino.catalogservice.fixtures.category.CategoryFixture.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;

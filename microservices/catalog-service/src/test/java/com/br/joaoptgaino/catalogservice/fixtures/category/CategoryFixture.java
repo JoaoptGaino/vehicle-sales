@@ -1,4 +1,4 @@
-package com.br.joaoptgaino.schedulingservice.fixtures.category;
+package com.br.joaoptgaino.catalogservice.fixtures.category;
 
 import com.br.joaoptgaino.catalogservice.dto.category.CategoryDTO;
 import com.br.joaoptgaino.catalogservice.dto.category.CategoryFormDTO;
