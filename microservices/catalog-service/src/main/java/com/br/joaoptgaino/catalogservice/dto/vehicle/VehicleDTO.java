@@ -22,7 +22,7 @@ public class VehicleDTO {
     private String color;
     private Integer year;
     private UUID addressId;
-    private String sellerCode;
+    private String sellerName;
     private List<VehicleCategoryDTO> categories;
     private List<VehiclePerkDTO> perks;
 }
