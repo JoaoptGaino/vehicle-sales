@@ -32,6 +32,9 @@ public class AddressEntity implements Serializable {
     @Column(name = "postal_code")
     private String postalCode;
 
+    @Column(name = "username")
+    private String username;
+
     @ManyToOne
     @JoinColumn(name = "city_id")
     private CityEntity city;

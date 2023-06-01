@@ -1,5 +1,6 @@
 package com.br.joaoptgaino.catalogservice.repository.specifications;
 
+import com.br.joaoptgaino.catalogservice.constants.VehicleType;
 import com.br.joaoptgaino.catalogservice.dto.vehicle.VehicleParamsDTO;
 import com.br.joaoptgaino.catalogservice.model.VehicleEntity;
 import lombok.experimental.UtilityClass;
@@ -12,10 +13,10 @@ public class VehicleSpecification {
     public static Specification<VehicleEntity> create(VehicleParamsDTO paramsDTO) {
         return hasMake(paramsDTO.getMake())
                 .and(hasModel(paramsDTO.getModel()))
-                .and(hasVehicleType(paramsDTO.getVehicleType().toString()))
-                .and(hasPlate(paramsDTO.getPlate()))
-                .and(hasColor(paramsDTO.getColor()))
-                .and(hasYear(paramsDTO.getYear()));
+                .and(hasVehicleType(paramsDTO.getVehicleType())
+                        .and(hasPlate(paramsDTO.getPlate()))
+                        .and(hasColor(paramsDTO.getColor()))
+                        .and(hasYear(paramsDTO.getYear())));
     }
 
     public static Specification<VehicleEntity> hasMake(String make) {
@@ -36,10 +37,10 @@ public class VehicleSpecification {
         };
     }
 
-    public static Specification<VehicleEntity> hasVehicleType(String vehicleType) {
+    public static Specification<VehicleEntity> hasVehicleType(VehicleType vehicleType) {
         return (root, query, criteriaBuilder) -> {
-            if (isNotBlank(vehicleType)) {
-                return criteriaBuilder.like(criteriaBuilder.upper(root.get("vehicleType")), "%" + vehicleType.toUpperCase() + "%");
+            if (vehicleType != null) {
+                return criteriaBuilder.like(criteriaBuilder.upper(root.get("vehicleType")), "%" + vehicleType.toString().toUpperCase() + "%");
             }
             return null;
         };
