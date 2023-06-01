@@ -1,4 +1,4 @@
-# vehicle-sales
+# Vehicle-sales
 A Vehicle sales application using BFF(Back-end for front-end) architecture.
 
 # Technologies 💻
