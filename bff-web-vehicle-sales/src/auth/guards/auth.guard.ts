@@ -2,10 +2,9 @@ import { HttpService } from '@nestjs/axios';
 import {
   CanActivate,
   ExecutionContext,
+  HttpException,
   HttpStatus,
   Injectable,
-  UnauthorizedException,
-  HttpException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
@@ -21,28 +20,26 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     if (request.headers.authorization) {
-      return await this.validateToken(request, context);
+      return await this.verifyToken(request);
     }
-    throw new UnauthorizedException();
+    throw new HttpException('Invalid Token', HttpStatus.UNAUTHORIZED);
   }
 
-  private async validateToken(
-    request: any,
-    context: ExecutionContext,
-  ): Promise<boolean> {
+  private async verifyToken(request: any): Promise<boolean> {
     const tokenDecoded = this.jwtService.decode(
       request.headers.authorization.slice(7),
     ) as any;
 
     if (tokenDecoded === null) {
-      throw new HttpException('Token not valid', HttpStatus.UNAUTHORIZED);
+      throw new HttpException('Invalid Token', HttpStatus.UNAUTHORIZED);
     }
-    if (await this.isTokenOk(request.headers.authorization.slice(7))) {
+    if (await this.validateToken(request.headers.authorization.slice(7))) {
       return true;
     }
+    throw new HttpException('Invalid Token', HttpStatus.UNAUTHORIZED);
   }
 
-  private async isTokenOk(token: string): Promise<boolean> {
+  private async validateToken(token: string): Promise<boolean> {
     const { status } = await firstValueFrom(
       this.httpService.request({
         method: 'GET',
